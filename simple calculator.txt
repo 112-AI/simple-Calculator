@@ -1,0 +1,68 @@
+package calculater;
+
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+public class Calculater {
+
+    static class Calculator {
+        private BigDecimal a;
+        private BigDecimal b;
+        private String operation;
+
+        // Constructor
+        public Calculator(BigDecimal a, BigDecimal b, String operation) {
+            this.a = a;
+            this.b = b;
+            this.operation = operation.toLowerCase(); // Normalize to lowercase
+        }
+
+        // Method to perform calculation
+        public String calculate() {
+            String result;
+            switch (operation) {
+                case "addition":
+                    result = a.add(b).toPlainString();
+                    break;
+                case "subtraction":
+                    result = a.subtract(b).toPlainString();
+                    break;
+                case "multiplication":
+                    result = a.multiply(b).toPlainString();
+                    break;
+                case "division":
+                    if (!b.equals(BigDecimal.ZERO)) {
+                        result = a.divide(b, 20, BigDecimal.ROUND_HALF_UP).toPlainString(); // 20 decimal places
+                    } else {
+                        return "Error: Division by zero is not allowed.";
+                    }
+                    break;
+                default:
+                    return "Error: Unsupported operation.";
+            }
+            return "Result: " + result; // Explicitly return the result as a string
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            // Input values
+            System.out.print("Enter the first number (a): ");
+            BigDecimal a = new BigDecimal(scanner.nextLine());
+            System.out.print("Enter the second number (b): ");
+            BigDecimal b = new BigDecimal(scanner.nextLine());
+            System.out.print("Enter the operation (addition, subtraction, multiplication, division): ");
+            String operation = scanner.nextLine();
+
+            // Create Calculator object and perform calculation
+            Calculator calculator = new Calculator(a, b, operation);
+            System.out.println(calculator.calculate());
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter valid numbers.");
+        } finally {
+            scanner.close(); // Close the scanner
+        }
+    }
+}

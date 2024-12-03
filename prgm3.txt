@@ -1,0 +1,35 @@
+package Aditya123;
+
+	
+	import java.util.Scanner;
+
+	public class aditya4 {
+	    
+
+		
+
+		    public static void main(String[] args) {
+		        Scanner scanner = new Scanner(System.in);
+
+		        
+		        System.out.print("Enter a positive integer: ");
+		        int a = scanner.nextInt();
+
+
+		        System.out.print("Output: ");
+		        generateSeries(a);
+
+		        scanner.close();
+		    }
+
+		    
+		    public static void generateSeries(int a) {
+		        int limit = (a % 2 == 0) ? a - 1 : a; 
+		        for (int i = 1; i <= limit; i += 2) {
+		            System.out.print(i);
+		            if (i + 2 <= limit) {
+		                System.out.print(", ");
+		            }
+		        }
+		    }
+		}

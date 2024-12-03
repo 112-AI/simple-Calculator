@@ -1,0 +1,51 @@
+package java4;
+
+
+	import java.util.HashMap;
+	import java.util.Map;
+	import java.util.Scanner;
+
+	public class MultiplesCounter {
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        
+	        System.out.println("Enter the numbers separated by spaces:");
+	        String input = scanner.nextLine();
+
+	        
+	        String[] inputArray = input.split(" ");
+	        int[] numbers = new int[inputArray.length];
+	        for (int i = 0; i < inputArray.length; i++) {
+	            numbers[i] = Integer.parseInt(inputArray[i]);
+	        }
+
+	        
+	        Map<Integer, Integer> result = countMultiples(numbers);
+	        System.out.println(result);
+
+	        scanner.close();
+	    }
+
+	    
+	    public static Map<Integer, Integer> countMultiples(int[] numbers) {
+	        Map<Integer, Integer> multiplesCount = new HashMap<>();
+
+	        
+	        for (int i = 1; i <=9; i++) {
+	            multiplesCount.put(i, 0);
+	        }
+
+	        
+	        for (int number : numbers) {
+	            for (int i = 1; i <= 9; i++) {
+	                if (number % i == 0) {
+	                    multiplesCount.put(i, multiplesCount.get(i) + 1);
+	                }
+	            }
+	        }
+
+	        return multiplesCount;
+	    }
+	}

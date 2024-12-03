@@ -10,14 +10,14 @@ public class Calculater {
         private BigDecimal b;
         private String operation;
 
-        // Constructor
+        
         public Calculator(BigDecimal a, BigDecimal b, String operation) {
             this.a = a;
             this.b = b;
-            this.operation = operation.toLowerCase(); // Normalize to lowercase
+            this.operation = operation.toLowerCase(); 
         }
 
-        // Method to perform calculation
+        
         public String calculate() {
             String result;
             switch (operation) {
@@ -32,7 +32,7 @@ public class Calculater {
                     break;
                 case "division":
                     if (!b.equals(BigDecimal.ZERO)) {
-                        result = a.divide(b, 20, BigDecimal.ROUND_HALF_UP).toPlainString(); // 20 decimal places
+                        result = a.divide(b, 20, BigDecimal.ROUND_HALF_UP).toPlainString(); 
                     } else {
                         return "Error: Division by zero is not allowed.";
                     }
@@ -40,7 +40,7 @@ public class Calculater {
                 default:
                     return "Error: Unsupported operation.";
             }
-            return "Result: " + result; // Explicitly return the result as a string
+            return "Result: " + result; 
         }
     }
 
@@ -48,7 +48,7 @@ public class Calculater {
         Scanner scanner = new Scanner(System.in);
 
         try {
-            // Input values
+            
             System.out.print("Enter the first number (a): ");
             BigDecimal a = new BigDecimal(scanner.nextLine());
             System.out.print("Enter the second number (b): ");
@@ -56,13 +56,13 @@ public class Calculater {
             System.out.print("Enter the operation (addition, subtraction, multiplication, division): ");
             String operation = scanner.nextLine();
 
-            // Create Calculator object and perform calculation
+            
             Calculator calculator = new Calculator(a, b, operation);
             System.out.println(calculator.calculate());
         } catch (Exception e) {
             System.out.println("Error: Invalid input. Please enter valid numbers.");
         } finally {
-            scanner.close(); // Close the scanner
+            scanner.close(); 
         }
     }
 }

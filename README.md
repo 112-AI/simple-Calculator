@@ -1,5 +1,1 @@
-# simple-Calculator
-
-
-
-its a java code
+all are java code
